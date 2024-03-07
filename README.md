@@ -10,3 +10,5 @@ Now display list of selectable heroes with details.
 Practiced *ngFor to display a list.
 Practiced *ngIf to conditionally include/exclude a block of HTML.
 Toggle CSS style class with class binding.
+
+Part 3: Create a feature component
