@@ -6,3 +6,7 @@ Applied UppercasePipe to format the Heroes name.
 Learned to use two-way binding with ngModel from FormsModule.
 
 Part 2: Display Selection List
+Now display list of selectable heroes with details.
+Practiced *ngFor to display a list.
+Practiced *ngIf to conditionally include/exclude a block of HTML.
+Toggle CSS style class with class binding.
