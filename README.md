@@ -12,3 +12,6 @@ Practiced *ngIf to conditionally include/exclude a block of HTML.
 Toggle CSS style class with class binding.
 
 Part 3: Create a feature component
+Created a seperate reusable Component 
+Used property binding to give parent child relationship on two components.
+Used @Input decorator to make hero property available for binding.
