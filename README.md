@@ -15,3 +15,11 @@ Part 3: Create a feature component
 Created a seperate reusable Component 
 Used property binding to give parent child relationship on two components.
 Used @Input decorator to make hero property available for binding.
+
+Part 4:
+Refactored data access to the HeroService class.
+Used Angular Dependency Injection.
+Discovered Observable RxJs library.
+Used the ngOnInit lifecycle hook to call the service.
+Created the Message Service to provide loose coupling.
+Used Service-in-Service injection.
