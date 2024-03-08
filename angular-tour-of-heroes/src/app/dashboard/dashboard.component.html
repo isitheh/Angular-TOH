@@ -1,0 +1,8 @@
+<p>dashboard works!</p>
+<div class="heroes-menu">
+    <!--*ngFor repeater creates as many links as there are in the heroes array-->
+    <!--Links styled in dashboard.component.css-->
+    <a *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
+        {{hero.name}}
+    </a>
+</div>
