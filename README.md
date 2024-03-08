@@ -25,9 +25,9 @@ Part 4: Add Service
   Used Service-in-Service injection.
 
 Part 5: Add Navigation
-Added Angular router to navigate between different components.
-In AppComponent now using <a> tags as links with RouterLink to navigate.
-Routing is configured in AppRoutingModule.
-Decoupled main/detail views to promote loosely coupled app.
-HeroServices shared amongst components.
-User-selected hero details can be viewed from dashboard and from Heroes list view.
+  Added Angular router to navigate between different components.
+  In AppComponent now using <a> tags as links with RouterLink to navigate.
+  Routing is configured in AppRoutingModule.
+  Decoupled main/detail views to promote loosely coupled app.
+  HeroServices shared amongst components.
+  User-selected hero details can be viewed from dashboard and from Heroes list view.
