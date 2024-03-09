@@ -7,4 +7,12 @@
     </li>
 </ul>
 
-<!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
+<div>
+    <label for="new-hero">Hero name: </label>
+    <input id="new-hero" #heroName />
+    <br/>
+    <!--Click to pass the input value to add() then clear input-->
+    <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
+        Add hero
+    </button>
+</div>
