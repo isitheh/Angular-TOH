@@ -4,10 +4,12 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ RouterOutlet, 
+  imports: [ 
+    RouterOutlet, 
     HeroesComponent, 
     MessagesComponent, 
     RouterLink, 
