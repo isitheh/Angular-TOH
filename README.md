@@ -31,3 +31,10 @@ Part 5: Add Navigation
   Decoupled main/detail views to promote loosely coupled app.
   HeroServices shared amongst components.
   User-selected hero details can be viewed from dashboard and from Heroes list view.
+
+Part 6: Data from Mock Server
+  Create and run a mock server from web api (in-memory-web-api).
+  HeroService Component now performs front end CRUD operations.
+  Learnt to use Observables.
+  Built a term serch functionality.
+  
