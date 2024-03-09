@@ -60,4 +60,10 @@ export class HeroesComponent {
       this.heroes.push(hero);
     });
   }
+
+  delete(hero: Hero): void {
+    //subscribe method facilitates the sending instruction to the server.
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero.id).subscribe();
+  }
 }
