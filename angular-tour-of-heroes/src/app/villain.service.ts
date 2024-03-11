@@ -45,7 +45,6 @@ export class VillainService {
    */
   getVillain(id: Number): Observable<Villain> {
     const url = `${this.villainsUrl}/${id}`;
-    console.log(this.http.get<Villain>(url));
     return this.http.get<Villain>(url).pipe(
       tap(_ => this.log(`fetched villain id=${id}`)),
       catchError(this.handleError<Villain>(`getVillain id=${id}`))
