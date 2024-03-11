@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { NgIf, NgFor } from '@angular/common';
-import { HeroService } from '../hero.service';
 import { Hero } from '../hero';
 import { Villain } from '../villain';
 import { RouterLink } from '@angular/router';
-import { HeroSearchComponent } from '../hero-search/hero-search.component';
+import { HeroService } from '../hero.service';
+import { NgIf, NgFor } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { VillainService } from '../villain.service';
+import { HeroSearchComponent } from '../hero-search/hero-search.component';
+import { VillainSearchComponent } from '../villain-search/villain-search.component';
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ NgIf, NgFor, RouterLink, HeroSearchComponent ],
+  imports: [ NgIf, NgFor, RouterLink, 
+    HeroSearchComponent, VillainSearchComponent ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
