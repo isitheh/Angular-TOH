@@ -11,13 +11,15 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css'],
-  imports: [CommonModule, 
+  imports: [
+    CommonModule, 
     FormsModule, 
     NgFor, 
     NgIf, 
     RouterLink,
     UpperCasePipe, 
-    HeroDetailComponent],
+    HeroDetailComponent
+  ],
 })
 
 export class HeroesComponent {

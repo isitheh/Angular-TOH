@@ -1,0 +1,10 @@
+<div *ngIf="villain">
+    <h2>{{villain.name | uppercase }} Details</h2>
+    <div>id: {{villain.id}}</div>
+    <div>
+        <label for="villain-name">Villain name: </label>
+        <input id="villain-name" [(ngModel)]="villain.name" placeholder="name">
+    </div>
+    <button type="button" (click)="goBack()"> << </button>
+    <button type="button" (click)="save()"> save </button>
+</div>

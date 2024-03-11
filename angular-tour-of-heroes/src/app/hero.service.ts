@@ -69,7 +69,7 @@ export class HeroService {
     return (error: any) : Observable<T> => {
       //Send the error to the remote logging infrastructure
       console.log(error);
-      this.log(`${operation} failed: ${error.message}`);
+      this.log(`${operation} failedx: ${error.message}`);
       //Return an empty result
       return of(result as T);
     }

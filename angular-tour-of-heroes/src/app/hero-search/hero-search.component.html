@@ -5,7 +5,7 @@
         <!--*ngFor iterates through heroes$ not heroes-->
         <!--heroes$  is an Observable. heroes is an array.-->
         <li *ngFor="let hero of heroes$ | async">
-            <a routerLink="/detail/{{hero.id}}">
+            <a routerLink="/hero_detail/{{hero.id}}">
                 {{hero.name}}
             </a>
         </li>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { HeroesComponent } from './heroes/heroes.component';
+import { VillainsComponent } from './villains/villains.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
@@ -10,7 +11,8 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
   standalone: true,
   imports: [ 
     RouterOutlet, 
-    HeroesComponent, 
+    HeroesComponent,
+    VillainsComponent, 
     MessagesComponent, 
     RouterLink, 
     DashboardComponent,

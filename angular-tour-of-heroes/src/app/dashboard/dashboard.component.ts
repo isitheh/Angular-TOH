@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero';
+import { Villain } from '../villain';
 import { RouterLink } from '@angular/router';
 import { HeroSearchComponent } from '../hero-search/hero-search.component';
+import { VillainService } from '../villain.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,14 +19,20 @@ export class DashboardComponent {
   //Define the heroes array property
   heroes: Hero[] = [];
 
+  //Define the villains array property
+  villains: Villain[] = [];
+
   /*
    * Inject the HeroService class as heroService property 
-   * into the Dashboard Component. Ensure not to call any
-   * services inside the constructor such as HTTP requests.
-   * Constructor is reserved for simple initializations and 
-   * wiring params to props.
+   * and the VillainService class into the Dashboard Component. 
+   * Ensure not to call any services inside the constructor such 
+   * as HTTP requests. Constructor is reserved for simple 
+   * initializations and wiring params to props.
    */
-  constructor(private heroServive: HeroService) {}
+  constructor(
+    private heroServive: HeroService,
+    private villainService: VillainService
+  ) {}
 
   /*
    * The ngOnInit lifecycle hook calls the getHeroes method.
@@ -37,6 +45,7 @@ export class DashboardComponent {
    */
   ngOnInit(): void {
     this.getHeroes();
+    this.getVillains();
   }
 
   getHeroes(): void {
@@ -48,5 +57,16 @@ export class DashboardComponent {
      */
     this.heroServive.getHeroes()
       .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+  }
+
+  getVillains(): void {
+    /*
+     * The slice(1, 5) method returns a sliced list of villains 
+     * between elements 1 and 5. In that case only Villains one,
+     * two, three and four will be returned, ie: index 1 
+     * inclusive and index 5 not included.
+     */
+    this.villainService.getVillains() 
+      .subscribe(villains => this.villains = villains.slice(1, 5));
   }
 }

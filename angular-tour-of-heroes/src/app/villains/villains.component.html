@@ -1,0 +1,18 @@
+<h2>My Villains</h2>
+<ul class="villains">
+    <li *ngFor="let villain of villains">
+        <a routerLink="/villain_detail/{{villain.id}}">
+            <span class="badge">{{villain.id}} </span> {{villain.name}}
+        </a>
+        <button type="button" class="delete" title="delete villain" (click)="delete(villain)">x</button>
+    </li>
+</ul>
+
+<div>
+    <label for="new-villain">Villain name: </label>
+    <input id="new-villain" #villainName />
+    <!--Click to pass the input value to add() then clear input-->
+    <button type="button" class="add-button" (click)="add(villainName.value); villainName.value=''">
+        Add villain
+    </button>
+</div>

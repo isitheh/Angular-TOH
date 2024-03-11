@@ -2,9 +2,17 @@
 <div class="heroes-menu">
     <!--*ngFor repeater creates as many links as there are in the heroes array-->
     <!--Links styled in dashboard.component.css-->
-    <a *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
+    <a *ngFor="let hero of heroes" routerLink="/hero_detail/{{hero.id}}">
         {{hero.name}}
     </a>
 </div>
-
 <app-hero-search></app-hero-search>
+
+<p>Top Villains</p>
+<div class="villain-menu">
+    <!--*ngFor repeater creates as many links as there are in the villains array-->
+    <!--Links styled in dashboard.component.css-->
+    <a *ngFor="let villain of villains" routerLink="/villain_detail/{{villain.id}}">
+        {{villain.name}}
+    </a>
+</div>
