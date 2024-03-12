@@ -4,6 +4,13 @@
     <div>
         <label for="hero-name">Hero name: </label>
         <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+        <br><br>
+        <label for="hero-nemesis">Nemesis: </label>
+        <select>
+            <option *ngFor="let villain of villains">
+                {{villain.name}}
+            </option>
+        </select>
     </div>
     <button type="button" (click)="goBack()"> << </button>
     <button type="button" (click)="save()"> save </button>

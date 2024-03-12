@@ -2,7 +2,8 @@
 <ul class="villains">
     <li *ngFor="let villain of villains">
         <a routerLink="/villain_detail/{{villain.id}}">
-            <span class="badge">{{villain.id}} </span> {{villain.name}}
+            <span class="badge">{{villain.id}}</span> {{villain.name}} 
+            <span class="nemesis"> {{villain.nemesis}} </span> 
         </a>
         <button type="button" class="delete" title="delete villain" (click)="delete(villain)">x</button>
     </li>

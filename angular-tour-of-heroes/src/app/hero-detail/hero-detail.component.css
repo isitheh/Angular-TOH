@@ -7,6 +7,10 @@ label {
     font-size: 1em;
     padding: .5rem;
   }
+  select {
+    font-size: 1em;
+    padding: .5rem;
+  }
   button {
     margin-top: 20px;
     background-color: #eee;

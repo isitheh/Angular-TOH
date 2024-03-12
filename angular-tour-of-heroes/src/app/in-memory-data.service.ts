@@ -8,7 +8,7 @@ import { Villain } from './villain';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const heroes = [
+    let heroes = [
       { id: 12, name: 'Dr. Nice' },
       { id: 13, name: 'Bombasto' },
       { id: 14, name: 'Celeritas' },
@@ -19,7 +19,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 19, name: 'Magma' },
       { id: 20, name: 'Tornado' }
     ];
-    const villains = [
+    let villains = [
       { id: 22, name: 'Villain 1' },
       { id: 23, name: 'Villain 2' },
       { id: 24, name: 'Villain 3' },
@@ -38,10 +38,6 @@ export class InMemoryDataService implements InMemoryDbService {
    * heroes/villain array is empty, return the initial number (11).If the 
    * heroes/villain array is not empty, return the highest hero/villain id + 1. 
    */
-  /*genId(heroes: Hero[]) : number {
-    return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
-  }*/
-
   genId<T extends Hero | Villain>(myTable: T[]): number {
     return myTable.length > 0 ? Math.max(...myTable.map(t => t.id)) + 1 : 11;
   }

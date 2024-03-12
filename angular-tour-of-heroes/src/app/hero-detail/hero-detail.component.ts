@@ -2,9 +2,11 @@
 import { Hero } from '../hero';
 import { FormsModule } from '@angular/forms';
 import { HeroService } from '../hero.service';
+import { VillainService } from '../villain.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, Input } from '@angular/core';
 import { CommonModule, UpperCasePipe, Location } from '@angular/common';
+import { Villain } from '../villain';
 
 @Component({
   selector: 'app-hero-detail',
@@ -15,7 +17,7 @@ import { CommonModule, UpperCasePipe, Location } from '@angular/common';
 })
 export class HeroDetailComponent {
   @Input() hero?: Hero;
-
+  villains: Villain[] = [];
   /*
    * Constructor:
    * Inject ActvatedRoute, HeroService and Location into the constructor
@@ -26,6 +28,7 @@ export class HeroDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
+    private villainService: VillainService,
     private location: Location
   ) {}
 
@@ -36,6 +39,7 @@ export class HeroDetailComponent {
 
   ngOnInit(): void {
     this.getHero();
+    this.getVillains();
   }
 
   goBack(): void {
@@ -46,5 +50,10 @@ export class HeroDetailComponent {
     if(this.hero) {
       this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
     }
+  }
+
+  //Retrieve the Villains from the service.
+  getVillains(): void {
+    this.villainService.getVillains().subscribe(villains => this.villains = villains);
   }
 }
