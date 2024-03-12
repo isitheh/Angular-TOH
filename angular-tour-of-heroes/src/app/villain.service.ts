@@ -1,16 +1,19 @@
+import { Hero } from './hero';
 import { Villain } from './villain';
 import { Observable, of } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { catchError, tap } from 'rxjs/operators';
+import { Injectable, OnInit } from '@angular/core';
 import { MessageService } from './message.service';
-import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class VillainService {
-  //Define the villainsUrl to the web api.
+export class VillainService implements OnInit {
+  /**
+   * Define the villainsUrl to the web api.
+   */
   private villainsUrl = 'api/villains';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type' : 'application/json' })
@@ -21,7 +24,13 @@ export class VillainService {
    */
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService
+  ) { }
+
+  // eslint-disable-next-line @angular-eslint/contextual-lifecycle
+  ngOnInit(): void {
+    this.getVillains();
+  }
 
   /**
    * Now get villains from the server.
@@ -31,6 +40,7 @@ export class VillainService {
    * @returns villains array
    */
   getVillains(): Observable<Villain[]> {
+    console.log("this is happening!");
     return this.http.get<Villain[]>(this.villainsUrl).pipe(
       tap(_ => this.log('Fetched villains.')),
       catchError(this.handleError<Villain[]>('getVillains', []))
@@ -84,6 +94,10 @@ export class VillainService {
    * 3. Options header.
    */
   updateVillain(villain: Villain) : Observable<any> {
+    console.log("Update villain: ", villain);
+    console.log("Update villain Id: ", villain.id);
+    console.log("Update villain Name: ", villain.name);
+    console.log("Update villain Enemies: ", villain.enemies);
     return this.http.put(this.villainsUrl, villain, this.httpOptions).pipe(
       tap(_ => this.log(`Updated villain id=${villain.id}`)),
       catchError(this.handleError<any>('updateVillain'))
@@ -128,5 +142,22 @@ export class VillainService {
         this.log(`no villains matching "${term}"`)),
         catchError(this.handleError<Villain[]>('searchVillains', []))
     );
+  }
+
+  /**
+   * assignNemesisToHero
+   * Assign the selected nemesis to the selected hero
+   */
+  assignNemesisToHero(hero: Hero): void {
+    const myString:string = hero.nemesis;
+    const mySubString = myString.substring(
+      myString.indexOf("(") + 1, myString.lastIndexOf(")")
+    );
+    const mId:number = + mySubString.trim();
+    this.getVillain(mId).forEach((villain) => {
+      villain.enemies.push(hero.name);
+      //Update the villain's enemies list.
+      this.updateVillain(villain);
+    });
   }
 }

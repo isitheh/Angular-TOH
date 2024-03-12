@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { CommonModule, NgIf, NgFor, UpperCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +22,7 @@ import { RouterLink } from '@angular/router';
   ],
 })
 
-export class HeroesComponent {
+export class HeroesComponent implements OnInit {
   //Expose the Heroes list, imported from mock-heroes, for binding.
   heroes: Hero[] = [];
   

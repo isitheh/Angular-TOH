@@ -18,7 +18,7 @@ import { VillainSearchComponent } from '../villain-search/villain-search.compone
   styleUrl: './dashboard.component.css'
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
   //Define the heroes array property
   heroes: Hero[] = [];
 

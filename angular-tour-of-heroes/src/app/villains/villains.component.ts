@@ -1,7 +1,7 @@
 import { Villain } from '../villain';
-import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { VillainService } from '../villain.service';
 import { CommonModule, NgIf, NgFor, UpperCasePipe } from '@angular/common';
 import { VillainDetailComponent } from '../villain-detail/villain-detail.component';
@@ -21,7 +21,7 @@ import { VillainDetailComponent } from '../villain-detail/villain-detail.compone
   templateUrl: './villains.component.html',
   styleUrl: './villains.component.css'
 })
-export class VillainsComponent {
+export class VillainsComponent implements OnInit {
     //Expose the Villains list, imported from mock-api-server, for binding.
     villains: Villain[] = [];
   

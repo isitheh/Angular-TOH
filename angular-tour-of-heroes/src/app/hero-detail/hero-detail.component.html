@@ -21,7 +21,7 @@
         <p></p>
         <select #villain (change)="onSelected(villain.value)">
             <option *ngFor="let villain of villains">
-                {{villain.name}}
+                {{villain.name}} ({{villain.id}})
             </option>
         </select>
     </div>

@@ -8,7 +8,7 @@ import { Villain } from './villain';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    let heroes = [  
+    const heroes = [  
       { id: 12, name: 'Dr. Nice', nemesis: 'None', superpower: 'Agreeable' },
       { id: 13, name: 'Bombasto', nemesis: 'None', superpower: 'Bomber' },
       { id: 14, name: 'Celeritas', nemesis: 'None', superpower: 'Speed' },
@@ -19,7 +19,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 19, name: 'Magma', nemesis: 'None', superpower: 'Hot' },
       { id: 20, name: 'Tornado', nemesis: 'None', superpower: 'Spiral' }
     ];
-    let villains = [
+    const villains = [
       { id: 22, name: 'Mr Topper', enemies: [], superpower: 'Climbing' },
       { id: 23, name: 'Mutilator', enemies: [], superpower: 'Cutting' },
       { id: 24, name: 'Gnasher', enemies: [], superpower: 'Shapeshifting' },

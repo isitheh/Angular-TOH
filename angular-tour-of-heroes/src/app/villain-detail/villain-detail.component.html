@@ -4,7 +4,7 @@
     <div>
         <label for="villain-name">Villain name: </label>
         <input id="villain-name" [(ngModel)]="villain.name" placeholder="name">
-        <input id="villain-name" [disabled]="true" [(ngModel)]="villain.enemies" placeholder="name">
+        <input id="villain-name" [disabled]="true" [(ngModel)]="villain.enemies" placeholder="none">
     </div>
     <button type="button" (click)="goBack()"> << </button>
     <button type="button" (click)="save()"> save </button>

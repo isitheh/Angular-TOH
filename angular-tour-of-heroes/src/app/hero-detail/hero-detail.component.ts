@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HeroService } from '../hero.service';
 import { VillainService } from '../villain.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule, UpperCasePipe, Location } from '@angular/common';
 import { Villain } from '../villain';
 
@@ -15,7 +15,7 @@ import { Villain } from '../villain';
   templateUrl: './hero-detail.component.html',
   styleUrl: './hero-detail.component.css'
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit {
   @Input() hero?: Hero;
   villains: Villain[] = [];
 
@@ -37,6 +37,7 @@ export class HeroDetailComponent {
     if(this.hero) {
       this.hero.nemesis = value;
       this.heroService.assignNemesisToHero(this.hero);
+      this.villainService.assignNemesisToHero(this.hero);
     }
 	}  
 
