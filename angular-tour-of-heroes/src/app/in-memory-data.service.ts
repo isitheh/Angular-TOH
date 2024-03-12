@@ -9,7 +9,7 @@ import { Villain } from './villain';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     let heroes = [  
-      { id: 12, name: 'Dr. Nice', nemesis: 'None', superpower: 'Agreable' },
+      { id: 12, name: 'Dr. Nice', nemesis: 'None', superpower: 'Agreeable' },
       { id: 13, name: 'Bombasto', nemesis: 'None', superpower: 'Bomber' },
       { id: 14, name: 'Celeritas', nemesis: 'None', superpower: 'Speed' },
       { id: 15, name: 'Magneta', nemesis: 'None', superpower: 'Magnetic' },

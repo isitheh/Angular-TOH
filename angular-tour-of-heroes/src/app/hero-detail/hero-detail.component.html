@@ -1,23 +1,32 @@
 <div *ngIf="hero">
     <h2>{{hero.name | uppercase }} Details</h2>
-    <div>id: {{hero.id}}</div>
+    <table border="1">
+        <tr>
+          <th>ID</th>
+          <th>Hero</th>
+          <th>Power</th>
+          <th>Nemesis</th>
+        </tr>
+        <tr ng-repeat = "hero in heroes">
+            <td>{{hero.id}}</td>
+            <td ng-repeat="name in hero">{{hero.name}}</td>
+            <td ng-repeat="superpower in hero">{{hero.superpower}}</td>
+            <td ng-repeat="nemesis in hero">{{hero.nemesis}}</td>
+        </tr>
+    </table>
+    <pre></pre>
+    <h4>Update Name and Nemesis:</h4>
     <div>
-        <label for="hero-name">Hero name: </label>
         <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
-        <pre></pre>
-        <label for="hero-name">Hero Superpower: </label>
-        <input id="hero-name" [(ngModel)]="hero.superpower" placeholder="name">
-        <pre></pre>
-        <label for="hero-name"> Current Nemesis: </label>
-        <input id="hero-name" [disabled]="true" [(ngModel)]="hero.nemesis" placeholder="name">
-        <br><br>
-        <label for="hero-nemesis">Assign Nemesis: </label>
+        <p></p>
         <select #villain (change)="onSelected(villain.value)">
             <option *ngFor="let villain of villains">
                 {{villain.name}}
             </option>
         </select>
     </div>
+
+        
     <button type="button" (click)="goBack()"> << </button>
     <button type="button" (click)="save()"> save </button>
 </div>
