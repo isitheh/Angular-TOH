@@ -4,9 +4,11 @@
     <div>
         <label for="hero-name">Hero name: </label>
         <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+        <label for="hero-name"> Current Nemesis: </label>
+        <input id="hero-name" [disabled]="true" [(ngModel)]="hero.nemesis" placeholder="name">
         <br><br>
-        <label for="hero-nemesis">Nemesis: </label>
-        <select>
+        <label for="hero-nemesis">Assign Nemesis: </label>
+        <select #villain (change)="onSelected(villain.value)">
             <option *ngFor="let villain of villains">
                 {{villain.name}}
             </option>

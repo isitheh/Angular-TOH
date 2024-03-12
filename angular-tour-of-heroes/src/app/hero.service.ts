@@ -93,6 +93,14 @@ export class HeroService {
   }
 
   /**
+   * assignNemesisToHero
+   * Assign the selected nemesis to the selected hero
+   */
+  assignNemesisToHero(hero: Hero) : void {
+    console.log("Hero is: ", hero);
+  }
+
+  /**
    * POST: Add a new hero to the server.
    */
   addHero(hero: Hero) : Observable<Hero> {

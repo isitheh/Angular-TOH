@@ -18,6 +18,8 @@ import { Villain } from '../villain';
 export class HeroDetailComponent {
   @Input() hero?: Hero;
   villains: Villain[] = [];
+  selectedVillain: string = "";
+
   /*
    * Constructor:
    * Inject ActvatedRoute, HeroService and Location into the constructor
@@ -31,6 +33,14 @@ export class HeroDetailComponent {
     private villainService: VillainService,
     private location: Location
   ) {}
+
+	onSelected(value:string): void {
+		this.selectedVillain = value;
+    if(this.hero) {
+      this.hero.nemesis = value;
+      this.heroService.assignNemesisToHero(this.hero);
+    }
+	}  
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
