@@ -1,6 +1,20 @@
 <div *ngIf="villain">
     <h2>{{villain.name | uppercase }} Details</h2>
-    <div>id: {{villain.id}}</div>
+    <table border="1">
+        <tr>
+          <th>ID</th>
+          <th>Villain</th>
+          <th>Power</th>
+          <th>Enemies</th>
+        </tr>
+        <tr ng-repeat = "villain in villains">
+            <td>{{villain.id}}</td>
+            <td ng-repeat="name in villain">{{villain.name}}</td>
+            <td ng-repeat="superpower in villain">{{villain.superpower}}</td>
+            <td ng-repeat="enemies in villain">{{villain.enemies}}</td>
+        </tr>
+    </table>
+    <pre></pre>
     <div>
         <label for="villain-name">Villain name: </label>
         <input id="villain-name" [(ngModel)]="villain.name" placeholder="name">
