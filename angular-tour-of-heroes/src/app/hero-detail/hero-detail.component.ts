@@ -18,7 +18,6 @@ import { Villain } from '../villain';
 export class HeroDetailComponent {
   @Input() hero?: Hero;
   villains: Villain[] = [];
-  selectedVillain: string = "";
 
   /*
    * Constructor:
@@ -35,7 +34,6 @@ export class HeroDetailComponent {
   ) {}
 
 	onSelected(value:string): void {
-		this.selectedVillain = value;
     if(this.hero) {
       this.hero.nemesis = value;
       this.heroService.assignNemesisToHero(this.hero);

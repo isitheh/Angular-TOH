@@ -85,7 +85,7 @@ export class HeroService {
    * 2. The modification data to update.
    * 3. Options header.
    */
-  updateHero(hero: Hero) : Observable<any> {
+  updateHero(hero: Hero): Observable<any> {
     return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
       tap(_ => this.log(`Updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
@@ -96,8 +96,11 @@ export class HeroService {
    * assignNemesisToHero
    * Assign the selected nemesis to the selected hero
    */
-  assignNemesisToHero(hero: Hero) : void {
-    console.log("Hero is: ", hero);
+  assignNemesisToHero(hero: Hero): Observable<any> {
+    return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+      tap(_ => this.log(`Updated hero id=${hero.id} with nemesis`)),
+      catchError(this.handleError<any>('assignNemesisToHero'))
+    );
   }
 
   /**

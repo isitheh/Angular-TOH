@@ -55,10 +55,12 @@ export class HeroesComponent {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
-  add(name: string): void {
+  add(name: string, power: string): void {
     name = name.trim();
+    power = power.trim();
     if(!name) { return; }
     this.heroService.addHero({ name } as Hero).subscribe(hero => {
+      hero.superpower = power;
       this.heroes.push(hero);
     });
   }

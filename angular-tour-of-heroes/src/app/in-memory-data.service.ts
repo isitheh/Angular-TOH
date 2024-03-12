@@ -8,27 +8,27 @@ import { Villain } from './villain';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    let heroes = [
-      { id: 12, name: 'Dr. Nice', nemesis: 'None' },
-      { id: 13, name: 'Bombasto', nemesis: 'None' },
-      { id: 14, name: 'Celeritas', nemesis: 'None' },
-      { id: 15, name: 'Magneta', nemesis: 'None' },
-      { id: 16, name: 'RubberMan', nemesis: 'None' },
-      { id: 17, name: 'Dynama', nemesis: 'None' },
-      { id: 18, name: 'Dr. IQ', nemesis: 'None' },
-      { id: 19, name: 'Magma', nemesis: 'None' },
-      { id: 20, name: 'Tornado', nemesis: 'None' }
+    let heroes = [  
+      { id: 12, name: 'Dr. Nice', nemesis: 'None', superpower: 'Agreable' },
+      { id: 13, name: 'Bombasto', nemesis: 'None', superpower: 'Bomber' },
+      { id: 14, name: 'Celeritas', nemesis: 'None', superpower: 'Speed' },
+      { id: 15, name: 'Magneta', nemesis: 'None', superpower: 'Magnetic' },
+      { id: 16, name: 'RubberMan', nemesis: 'None', superpower: 'Resistance' },
+      { id: 17, name: 'Dynama', nemesis: 'None', superpower: 'Chameleonic' },
+      { id: 18, name: 'Dr. IQ', nemesis: 'None', superpower: 'Smart' },
+      { id: 19, name: 'Magma', nemesis: 'None', superpower: 'Hot' },
+      { id: 20, name: 'Tornado', nemesis: 'None', superpower: 'Spiral' }
     ];
     let villains = [
-      { id: 22, name: 'Villain 1' },
-      { id: 23, name: 'Villain 2' },
-      { id: 24, name: 'Villain 3' },
-      { id: 25, name: 'Villain 4' },
-      { id: 26, name: 'Villain 5' },
-      { id: 27, name: 'Villain 6' },
-      { id: 28, name: 'Villain 7' },
-      { id: 29, name: 'Villain 8' },
-      { id: 30, name: 'Villain 9' }
+      { id: 22, name: 'Mr Topper', enemies: [], superpower: 'Climbing' },
+      { id: 23, name: 'Mutilator', enemies: [], superpower: 'Cutting' },
+      { id: 24, name: 'Gnasher', enemies: [], superpower: 'Shapeshifting' },
+      { id: 25, name: 'Hound', enemies: [], superpower: 'Strength' },
+      { id: 26, name: 'Warmonger', enemies: [], superpower: 'Telekinesis' },
+      { id: 27, name: 'Prince', enemies: [], superpower: 'Stubbornness' },
+      { id: 28, name: 'King', enemies: [], superpower: 'X-Ray Vision' },
+      { id: 29, name: 'Queen', enemies: [], superpower: 'Omniscience' },
+      { id: 30, name: 'RazorClaw', enemies: [], superpower: 'Sharp'}
     ];
     return {heroes, villains};
   }

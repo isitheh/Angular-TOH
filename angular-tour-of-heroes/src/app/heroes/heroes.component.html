@@ -11,8 +11,10 @@
 <div>
     <label for="new-hero">Hero name: </label>
     <input id="new-hero" #heroName />
+    <label for="new-hero">Super power: </label>
+    <input id="new-hero" #heroPower />
     <!--Click to pass the input value to add() then clear input-->
-    <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
+    <button type="button" class="add-button" (click)="add(heroName.value, heroPower.value); heroName.value=''; heroPower.value">
         Add hero
     </button>
 </div>
