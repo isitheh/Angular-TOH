@@ -60,6 +60,18 @@ export class VillainService implements OnInit {
     )
   }
 
+  getVillainByName(name:string): Observable<Villain[]> {
+    if(!name.trim()) {
+      return of([]);
+    }
+    return this.http.get<Villain[]>(`${this.villainsUrl}/?name=${name}`).pipe(
+      tap(x => x.length ? 
+        this.log(`found villains matching "${name}"`) : 
+        this.log(`no villains matching "${name}"`)),
+        catchError(this.handleError<Villain[]>('getVillainByName', []))
+    );
+  }
+
   /**
    * Log a VillainService message with the MessageService
    */
@@ -144,16 +156,14 @@ export class VillainService implements OnInit {
    * Assign the selected nemesis to the selected hero
    */
   assignNemesisToHero(hero: Hero): void {
-    const myString:string = hero.nemesis;
-    const mySubString = myString.substring(
-      myString.indexOf("(") + 1, myString.lastIndexOf(")")
-    );
-    const mId:number = + mySubString.trim();
-    this.getVillain(mId).forEach((villain) => {
-      villain.enemies.push(hero.name);
+    const myString:string = hero.nemesis; 
+    this.getVillainByName(myString.trim()).forEach((villain) => {
+      villain[0].enemies.push(hero.name);
       //Update the villain's enemies list.
       if(villain) {
-        this.updateVillain(villain).subscribe(() => {console.log("Assigned Nemesis to Hero.")});
+        this.updateVillain(villain[0]).subscribe(() => {
+          console.log("Assigned Nemesis to Hero.")
+        });
       }
     });
   }
