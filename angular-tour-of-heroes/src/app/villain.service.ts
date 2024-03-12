@@ -40,7 +40,6 @@ export class VillainService implements OnInit {
    * @returns villains array
    */
   getVillains(): Observable<Villain[]> {
-    console.log("this is happening!");
     return this.http.get<Villain[]>(this.villainsUrl).pipe(
       tap(_ => this.log('Fetched villains.')),
       catchError(this.handleError<Villain[]>('getVillains', []))
@@ -94,10 +93,6 @@ export class VillainService implements OnInit {
    * 3. Options header.
    */
   updateVillain(villain: Villain) : Observable<any> {
-    console.log("Update villain: ", villain);
-    console.log("Update villain Id: ", villain.id);
-    console.log("Update villain Name: ", villain.name);
-    console.log("Update villain Enemies: ", villain.enemies);
     return this.http.put(this.villainsUrl, villain, this.httpOptions).pipe(
       tap(_ => this.log(`Updated villain id=${villain.id}`)),
       catchError(this.handleError<any>('updateVillain'))
@@ -157,7 +152,9 @@ export class VillainService implements OnInit {
     this.getVillain(mId).forEach((villain) => {
       villain.enemies.push(hero.name);
       //Update the villain's enemies list.
-      this.updateVillain(villain);
+      if(villain) {
+        this.updateVillain(villain).subscribe(() => {console.log("Assigned Nemesis to Hero.")});
+      }
     });
   }
 }

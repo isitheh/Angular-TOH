@@ -4,7 +4,12 @@
     <div>
         <label for="villain-name">Villain name: </label>
         <input id="villain-name" [(ngModel)]="villain.name" placeholder="name">
-        <input id="villain-name" [disabled]="true" [(ngModel)]="villain.enemies" placeholder="none">
+        <p>Watch your back {{villain.name}}. The following Heros are on your tail:</p>
+        <ul>
+            <li *ngFor="let enemy of enemies">
+                {{enemy}}
+            </li>
+        </ul>
     </div>
     <button type="button" (click)="goBack()"> << </button>
     <button type="button" (click)="save()"> save </button>
