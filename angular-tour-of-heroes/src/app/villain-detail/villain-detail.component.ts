@@ -1,5 +1,4 @@
 import { Villain } from '../villain';
-import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { VillainService } from '../villain.service';

@@ -41,7 +41,7 @@ export class VillainService implements OnInit {
    */
   getVillains(): Observable<Villain[]> {
     return this.http.get<Villain[]>(this.villainsUrl).pipe(
-      tap(_ => this.log('Fetched villains.')),
+      tap(() => this.log('Fetched villains.')),
       catchError(this.handleError<Villain[]>('getVillains', []))
     );
   }
@@ -52,10 +52,10 @@ export class VillainService implements OnInit {
    * Server responds with a single villain not an array of villains.
    * @returns and Observable<villain>
    */
-  getVillain(id: Number): Observable<Villain> {
+  getVillain(id: number): Observable<Villain> {
     const url = `${this.villainsUrl}/${id}`;
     return this.http.get<Villain>(url).pipe(
-      tap(_ => this.log(`fetched villain id=${id}`)),
+      tap(() => this.log(`fetched villain id=${id}`)),
       catchError(this.handleError<Villain>(`getVillain id=${id}`))
     )
   }
@@ -86,10 +86,10 @@ export class VillainService implements OnInit {
    * directly, but returns operation to the catchError.
    */
   private handleError<T>(operation = 'operation', result ? : T) {
-    return (error: any) : Observable<T> => {
+    return (error: { message: never }) : Observable<T> => {
       //Send the error to the remote logging infrastructure
       console.log(error);
-      this.log(`${operation} failedz: ${error.message}`);
+      this.log(`${operation} failed: ${error.message}`);
       //Return an empty result
       return of(result as T);
     }
@@ -104,10 +104,10 @@ export class VillainService implements OnInit {
    * 2. The modification data to update.
    * 3. Options header.
    */
-  updateVillain(villain: Villain) : Observable<any> {
+  updateVillain(villain: Villain) : Observable<unknown> {
     return this.http.put(this.villainsUrl, villain, this.httpOptions).pipe(
-      tap(_ => this.log(`Updated villain id=${villain.id}`)),
-      catchError(this.handleError<any>('updateVillain'))
+      tap(() => this.log(`Updated villain id=${villain.id}`)),
+      catchError(this.handleError<never>('updateVillain'))
     );
   }
 
@@ -128,7 +128,7 @@ export class VillainService implements OnInit {
   deleteVillain(id: number) : Observable<Villain> {
     const url = `${this.villainsUrl}/${id}`;
     return this.http.delete<Villain>(url, this.httpOptions).pipe(
-      tap(_=> this.log(`deleted villain id=${id}`)),
+      tap(() => this.log(`deleted villain id=${id}`)),
       catchError(this.handleError<Villain>('deleteVillain'))
     );
   }

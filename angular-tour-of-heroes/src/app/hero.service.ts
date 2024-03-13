@@ -3,7 +3,7 @@ import { Hero } from './hero';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class HeroService {
    */
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl).pipe(
-      tap(_ => this.log('Fetched heroes.')),
+      tap(() => this.log('Fetched heroes.')),
       catchError(this.handleError<Hero[]>('getHeroes', []))
     );
   }
@@ -43,10 +43,10 @@ export class HeroService {
    * Server responds with a single hero not an array of heroes.
    * @returns and Observable<hero>
    */
-  getHero(id: Number): Observable<Hero> {
+  getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
+      tap(() => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
     )
   }
@@ -65,10 +65,10 @@ export class HeroService {
    * directly, but returns operation to the catchError.
    */
   private handleError<T>(operation = 'operation', result ? : T) {
-    return (error: any) : Observable<T> => {
+    return (error: { message: never }) : Observable<T> => {
       //Send the error to the remote logging infrastructure
       console.log(error);
-      this.log(`${operation} failedx: ${error.message}`);
+      this.log(`${operation} failed: ${error.message}`);
       //Return an empty result
       return of(result as T);
     }
@@ -83,10 +83,10 @@ export class HeroService {
    * 2. The modification data to update.
    * 3. Options header.
    */
-  updateHero(hero: Hero): Observable<any> {
+  updateHero(hero: Hero): Observable<unknown> {
     return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap(_ => this.log(`Updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+      tap(() => this.log(`Updated hero id=${hero.id}`)),
+      catchError(this.handleError<never>('updateHero'))
     );
   }
 
@@ -94,10 +94,10 @@ export class HeroService {
    * assignNemesisToHero
    * Assign the selected nemesis to the selected hero
    */
-  assignNemesisToHero(hero: Hero): Observable<any> {
+  assignNemesisToHero(hero: Hero): Observable<unknown> {
     return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap(_ => this.log(`Updated hero id=${hero.id} with nemesis`)),
-      catchError(this.handleError<any>('assignNemesisToHero'))
+      tap(() => this.log(`Updated hero id=${hero.id} with nemesis`)),
+      catchError(this.handleError<never>('assignNemesisToHero'))
     );
   }
 
@@ -118,7 +118,7 @@ export class HeroService {
   deleteHero(id: number) : Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.delete<Hero>(url, this.httpOptions).pipe(
-      tap(_=> this.log(`deleted hero id=${id}`)),
+      tap(()=> this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<Hero>('deleteHero'))
     );
   }
